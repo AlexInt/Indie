@@ -1,0 +1,9 @@
+{
+  "lock": false,
+  "tasks": {
+    "nft": "deno run  -A --allow-env=NODE_DEBUG --watch --no-check NFTs/op_index.ts --dev",
+    "eth": "deno run  -A --allow-env=NODE_DEBUG --watch --no-check NFTs/index.ts --dev",
+    "sol": "deno run  -A --allow-env=NODE_DEBUG --watch --no-check NFTs/sol_index.ts --dev",
+    "test": "deno test --no-check=remote --allow-read",
+  }
+}
