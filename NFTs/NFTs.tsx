@@ -1,4 +1,5 @@
 /** @jsx h */
+/** @jsxFrag Fragment */
 /// <reference no-default-lib="true"/>
 /// <reference lib="dom" />
 /// <reference lib="dom.asynciterable" />
@@ -138,7 +139,8 @@ async function evmFetch(configs: NFTConfigs) {
                 token_id: item.token_id,
                 contract_type: item.contract_type,
                 contract_address: item.contractAddress,
-                owner_of: item.owner_of
+                owner_of: item.owner_of,
+                description: item.description
             }
         })
     }
@@ -151,11 +153,12 @@ async function evmFetch(configs: NFTConfigs) {
                 title: item.name,
                 nftImage: item.image,
                 nftVideo: item.video,
-                pathname: item.video ? 'video' : 'image',
+                pathname: configs.categoryType,
                 token_id: item.token_id,
                 contract_type: item.contract_type,
                 contract_address: item.contractAddress,
-                owner_of: item.owner_of
+                owner_of: item.owner_of,
+                description: item.description
             }
         });
     }

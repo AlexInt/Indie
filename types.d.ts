@@ -1,6 +1,6 @@
 // Copyright 2022 the Deno authors. All rights reserved. MIT license.
 
-import type {ConnInfo, UnoConfig, VNode} from "./deps.ts";
+import type { ConnInfo, UnoConfig, VNode } from "./deps.ts";
 
 export interface BlogContext {
     state: BlogState;
@@ -126,4 +126,5 @@ export interface NFT extends Post {
     owner_of: string;
     nftImage?: string;
     nftVideo?: string;
+    description?: string;
 }

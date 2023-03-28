@@ -9,7 +9,7 @@ const configs: NFTConfigs = {
     title: 'Otherdeed',
     author: 'Jimmy',
     apikey: MORALIS_API_KEY,
-    tokenID:'13',
+    // tokenID:'13',
     contractAddress: BSC_CONTRACT_ADDRESS,
     categoryType: 'video',
     chainType: 'BSC',

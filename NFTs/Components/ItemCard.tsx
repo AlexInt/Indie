@@ -6,8 +6,6 @@
 /// <reference lib="deno.ns" />
 import { NFT, NFTConfigs } from "../../types.d.ts";
 import { gfm, h } from "../../deps.ts";
-import Tags from './Tags.tsx'
-
 
 interface NFTItemProp {
     config: NFTConfigs;
@@ -38,13 +36,15 @@ export default function ItemCard(
     return (
         <div className="flex flex-row pt-12 first:pt-0">
             <div className="basis-3/4">
-                <h3 className="text-2xl font-bold">
+                <h3 className="text-3xl font-bold">
                     <a className=""
                        href={link()}>
                         {nft.title}
                     </a>
                 </h3>
-                <Tags tags={nft.tags}/>
+                <p className="mt-3 text-base">
+                    {nft.description && <span className='font-semibold text-gray-600 dark:text-gray-200'>{`${nft.description}`} {" "}</span>}
+                </p>
                 <p className="mt-3 text-base">
                     Owner: {nft.owner_of && <span className='text-gray-500/80'>{`${nft.owner_of}`} {" "}</span>}
                 </p>

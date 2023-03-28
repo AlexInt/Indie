@@ -27,32 +27,43 @@ export default class EVM {
         return Promise.resolve(metaJson)
     }
 
-    public async getNFTMetadata(address: string, token_id: string): Promise<NFTMetaData[]> {
+    public async getNFTMetadata(address: string, token_id: string): Promise<NFTMetaData> {
+        // console.log(address, token_id)
         this.url.pathname = `/api/v2/nft/${address}/${token_id}`
         this.url.searchParams.set('format', 'decimal');
         this.url.searchParams.set('media_items', 'false')
 
         const nftData = await this.fetchNFT()
-        const metaJson = JSON.parse(nftData.metadata)
-
+        // console.log('nftData',nftData)
         const nftMeta: NFTMetaData = {
             name: nftData.name,
             owner_of: nftData.owner_of,
             contractAddress: nftData.token_address,
             token_id: nftData.token_id,
             contract_type: nftData.contract_type,
-            image: IPFS.ipfs2https(metaJson.image),
         }
-        if (metaJson.properties?.category === 'video') {
-            nftMeta.video = IPFS.ipfs2https(metaJson.properties?.files[0])
+        if (nftData.metadata) {
+            const metaJson = JSON.parse(nftData.metadata)
+            // console.log(metaJson)
+            nftMeta.image = IPFS.ipfs2https(metaJson.image)
+            nftMeta.name = metaJson.name;
+            nftMeta.description = metaJson.description;
+            nftMeta.category_type = metaJson.properties?.category;
+
+
+            if (metaJson.properties?.category === 'video') {
+                nftMeta.video = IPFS.ipfs2https(metaJson.properties?.files[0])
+            }
         }
 
-        return Promise.resolve([nftMeta]);
+
+        return Promise.resolve(nftMeta);
     }
 
     public async getNFTByContract(address: string, token_id?: string): Promise<NFTMetaData[]> {
         if (token_id) {
-            return await this.getNFTMetadata(address, token_id)
+            const nft = await this.getNFTMetadata(address, token_id)
+            return Promise.resolve([nft])
         }
         this.url.pathname = `/api/v2/nft/${address}`
         this.url.searchParams.set('format', 'decimal');
@@ -61,16 +72,7 @@ export default class EVM {
         const {result} = await this.fetchNFT()
         const metas: NFTMetaData[] = []
         for (const nftData of result) {
-            const img = await this.getImage(IPFS.ipfs2https(nftData.token_uri))
-            const owners = await this.getNFTOwnersByContract(nftData.token_address, nftData.token_id)
-            const meta: NFTMetaData = {
-                name: `${nftData.name} #${nftData.token_id}`,
-                image: img,
-                token_id: nftData.token_id,
-                contractAddress: nftData.token_address,
-                contract_type: nftData.contract_type,
-                owner_of: owners
-            }
+            const meta = await this.getNFTMetadata(nftData.token_address, nftData.token_id)
             metas.push(meta)
         }
         return Promise.resolve(metas);
@@ -97,6 +99,7 @@ export default class EVM {
 
    private async getImage(tokenURI: string): Promise<string> {
         try {
+            console.log(tokenURI)
             const res = await fetch(tokenURI)
             const {image} = await res.json();
             return Promise.resolve(image)

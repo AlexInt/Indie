@@ -22,6 +22,7 @@ export interface NFTMetaData {
     contract_type?: string;
     token_uri?: string;
     properties?: Properties;
+    category_type?: CategoryType;
 }
 
 export interface Properties {
