@@ -49,7 +49,7 @@ export default async function myNFTs(configs?: NFTConfigs) {
         case "ETH":
         case "BSC":
         {
-            console.log(configs.chainType)
+            // console.log(configs.chainType)
             await evmFetch(configs);
             break;
         }
@@ -60,7 +60,7 @@ export default async function myNFTs(configs?: NFTConfigs) {
                 NFTMetas = [{
                     title: nft.name,
                     nftImage: nft.image,
-                    pathname: 'detail',
+                    pathname: configs.categoryType,
                     contract_type: nft.contract_type,
                     contract_address: nft.contractAddress,
                     owner_of: nft.owner_of
@@ -73,7 +73,7 @@ export default async function myNFTs(configs?: NFTConfigs) {
                     return  {
                         title: nft.name,
                         nftImage: nft.image,
-                        pathname: 'detail',
+                        pathname: configs.categoryType,
                         contract_type: nft.contract_type,
                         contract_address: nft.contractAddress,
                         owner_of: nft.owner_of
@@ -94,7 +94,7 @@ export default async function myNFTs(configs?: NFTConfigs) {
                     {
                         title: nftMetaData.name,
                         nftImage: IPFS.ipfs2https(nftMetaData?.image),
-                        pathname: 'more',
+                        pathname: configs.categoryType,
                         token_id: configs?.tokenID,
                         content: nftMetaData.content,
                         contract_address: configs.tokenAddress,
@@ -108,7 +108,7 @@ export default async function myNFTs(configs?: NFTConfigs) {
                     {
                         title: collectionMetas.name,
                         ogImage: collectionMetas.image,
-                        pathname: 'more',
+                        pathname: configs.categoryType,
                         content: collectionMetas.content,
                     }
                 ]
@@ -134,7 +134,7 @@ async function evmFetch(configs: NFTConfigs) {
             return {
                 title: item.name,
                 nftImage: item.image,
-                pathname: 'detail',
+                pathname: configs.categoryType,
                 token_id: item.token_id,
                 contract_type: item.contract_type,
                 contract_address: item.contractAddress,
@@ -171,10 +171,10 @@ async function handler(
 ) {
     const {pathname, searchParams} = new URL(req.url);
     console.log('pathname',pathname)
-    if (Configs?.categoryType === 'article' && pathname == '/more') {
+    if (Configs?.categoryType === 'article' && pathname == '/article') {
         return await routeArticleDetail()
     }
-    else if(Configs?.categoryType === 'image' && pathname == '/detail') {
+    else if(Configs?.categoryType === 'image' && pathname == '/image') {
         const tokenID = searchParams.get('tokenID')
         const address = searchParams.get('address')
         console.log('routeImageDetail', address, tokenID)

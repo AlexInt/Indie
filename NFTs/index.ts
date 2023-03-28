@@ -5,7 +5,7 @@ import {NFTConfigs} from "../types.d.ts";
 //JoNfkczsuq7jUsObnnYYKEjKLvUevDcRG1NRzax86ZZKyuEFrLIwP60OweVSlzEw
 //p5vaokS6yrC8mPlsUYUnl3cXFOhgV0wKnMFLuBHLeKKPn3wdqq9uCAaNE2xooImJ
 const MORALIS_API_KEY =
-    "JoNfkczsuq7jUsObnnYYKEjKLvUevDcRG1NRzax86ZZKyuEFrLIwP60OweVSlzEw";
+    "o2AG8eA63Kmf9046owUsXfmlzvFIZeVlMS16AYjZdlIPG9UW92EwICIbKNYzxKCp";
 //EVM
 const EVM_WALLET_ADDRESS = '0x6829Bb547c3e4e077Dacd15a75aDF8fad38dDb93'
 const EVM_CONTRACT_ADDRESS = '0x34d85c9CDeB23FA97cb08333b511ac86E1C4E258'
@@ -19,12 +19,12 @@ const configs: NFTConfigs = {
     apikey: MORALIS_API_KEY,
     // walletAddress: EVM_WALLET_ADDRESS,
     // tokenID:'13',
-    // contractAddress: EVM_CONTRACT_ADDRESS,
-    // categoryType: 'image',
-    // chainType: 'ETH',
-    contractAddress: BSC_CONTRACT_ADDRESS,
-    categoryType: 'video',
-    chainType: 'BSC',
+    contractAddress: EVM_CONTRACT_ADDRESS,
+    categoryType: 'image',
+    chainType: 'ETH',
+    // contractAddress: BSC_CONTRACT_ADDRESS,
+    // categoryType: 'video',
+    // chainType: 'BSC',
     description: "Welcome to the home of MONKEY on OpenSea. Discover the best items in this collection.",
     coverTextColor:'white',
     avatar: "https://assets.otherside.xyz/otherdeeds/89561f877b88d4dc51bad965cf6a854970738d640e7910c4ca7bd11d75608a0e.jpg",
