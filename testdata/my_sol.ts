@@ -1,11 +1,9 @@
 import myNFTs from "../NFTs/NFTs.tsx";
 import {NFTConfigs} from "../types.d.ts";
+import { moralisApiKey } from "../keys.ts"
 
-//o2AG8eA63Kmf9046owUsXfmlzvFIZeVlMS16AYjZdlIPG9UW92EwICIbKNYzxKCp
-//JoNfkczsuq7jUsObnnYYKEjKLvUevDcRG1NRzax86ZZKyuEFrLIwP60OweVSlzEw
-//p5vaokS6yrC8mPlsUYUnl3cXFOhgV0wKnMFLuBHLeKKPn3wdqq9uCAaNE2xooImJ
-const MORALIS_API_KEY =
-    "JoNfkczsuq7jUsObnnYYKEjKLvUevDcRG1NRzax86ZZKyuEFrLIwP60OweVSlzEw";
+const MORALIS_API_KEY = moralisApiKey;
+
 
 //EJpLyTeE8XHG9CeREeHd6pr6hNhaRnTRJx4Z5DPhEJJ6
 //6ARSYR2B1aPWSjK11ZXDPmApgLgar3bCrm2BTYGS2jBK

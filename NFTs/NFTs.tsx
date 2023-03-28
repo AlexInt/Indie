@@ -170,14 +170,14 @@ async function handler(
     req: Request
 ) {
     const {pathname, searchParams} = new URL(req.url);
-    console.log('pathname',pathname)
+    // console.log('pathname',pathname)
     if (Configs?.categoryType === 'article' && pathname == '/article') {
         return await routeArticleDetail()
     }
     else if(Configs?.categoryType === 'image' && pathname == '/image') {
         const tokenID = searchParams.get('tokenID')
         const address = searchParams.get('address')
-        console.log('routeImageDetail', address, tokenID)
+        // console.log('routeImageDetail', address, tokenID)
         if (address) {
             return routeImageDetail(address, tokenID)
         }
@@ -185,7 +185,7 @@ async function handler(
     else if(Configs?.categoryType === 'video' && pathname == '/video') {
         const tokenID = searchParams.get('tokenID')
         const address = searchParams.get('address')
-        console.log('routeVideoDetail', address, tokenID)
+        // console.log('routeVideoDetail', address, tokenID)
         if (address) {
             return routeVideoDetail(address, tokenID)
         }

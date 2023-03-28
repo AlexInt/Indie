@@ -9,8 +9,8 @@ export default class EVM {
     private readonly chain: string
 
     constructor(apiKey: string, chain: ChainType = 'ETH') {
-        // this.url = new URL('https://deep-index.moralis.io/api/v2')
-        this.url = new URL('https://deep-index-moralis-io.paiyaapp.com');
+        this.url = new URL('https://deep-index.moralis.io')
+        // this.url = new URL('https://deep-index-moralis-io.paiyaapp.com');
         this.chain = chain.toLowerCase()
         this.url.searchParams.set('chain', this.chain);
         this.headers = {

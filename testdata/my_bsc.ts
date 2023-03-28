@@ -1,30 +1,18 @@
 import myNFTs from "../NFTs/NFTs.tsx";
 import {NFTConfigs} from "../types.d.ts";
+import { moralisApiKey } from "../keys.ts"
 
-//o2AG8eA63Kmf9046owUsXfmlzvFIZeVlMS16AYjZdlIPG9UW92EwICIbKNYzxKCp
-//JoNfkczsuq7jUsObnnYYKEjKLvUevDcRG1NRzax86ZZKyuEFrLIwP60OweVSlzEw
-//p5vaokS6yrC8mPlsUYUnl3cXFOhgV0wKnMFLuBHLeKKPn3wdqq9uCAaNE2xooImJ
-const MORALIS_API_KEY =
-    "o2AG8eA63Kmf9046owUsXfmlzvFIZeVlMS16AYjZdlIPG9UW92EwICIbKNYzxKCp";
-//EVM
-const EVM_WALLET_ADDRESS = '0x6829Bb547c3e4e077Dacd15a75aDF8fad38dDb93'
-const EVM_CONTRACT_ADDRESS = '0x34d85c9CDeB23FA97cb08333b511ac86E1C4E258'
-const TOKEN_ID = '98047'
-
+const MORALIS_API_KEY = moralisApiKey;
 const BSC_CONTRACT_ADDRESS = '0xf9938bc37d7be7bb8444326d70d13478beb7d83d'
 
 const configs: NFTConfigs = {
     title: 'Otherdeed',
     author: 'Jimmy',
     apikey: MORALIS_API_KEY,
-    // walletAddress: EVM_WALLET_ADDRESS,
-    // tokenID:'13',
-    contractAddress: EVM_CONTRACT_ADDRESS,
-    categoryType: 'image',
-    chainType: 'ETH',
-    // contractAddress: BSC_CONTRACT_ADDRESS,
-    // categoryType: 'video',
-    // chainType: 'BSC',
+    tokenID:'13',
+    contractAddress: BSC_CONTRACT_ADDRESS,
+    categoryType: 'video',
+    chainType: 'BSC',
     description: "Welcome to the home of MONKEY on OpenSea. Discover the best items in this collection.",
     coverTextColor:'white',
     avatar: "https://assets.otherside.xyz/otherdeeds/89561f877b88d4dc51bad965cf6a854970738d640e7910c4ca7bd11d75608a0e.jpg",

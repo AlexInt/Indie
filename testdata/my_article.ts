@@ -1,8 +1,9 @@
 import myNFTs from "../NFTs/NFTs.tsx";
 import {NFTConfigs} from "../types.d.ts";
+import { opApiKey } from "../keys.ts"
 
 //op mainnet
-const OP_API_KEY = "4IBC5YPVXEMARUGNGKXK29AHIG6SBDYBZJ";
+const OP_API_KEY = opApiKey;
 const ARTICLE_OP_ADDRESS = '0xC0CBf706Fa55ea946D8FD9912E0f7F9D30fD3b0B'
 
 const configs: NFTConfigs = {
