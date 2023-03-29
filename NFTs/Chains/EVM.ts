@@ -45,8 +45,9 @@ export default class EVM {
         if (nftData.metadata) {
             const metaJson = JSON.parse(nftData.metadata)
             // console.log(metaJson)
-            nftMeta.image = IPFS.ipfs2https(metaJson.image)
-            if (!nftData.name.includes(token_id)) {
+            nftMeta.image = IPFS.isValidTokenURL(metaJson.image) ? IPFS.ipfs2https(metaJson.image) : './Components/not-found.png'
+
+            if (nftData.name && !nftData.name.includes(token_id)) {
                 nftMeta.name += ` #${token_id}`;
             }
             if (metaJson.name) {

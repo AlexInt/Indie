@@ -135,6 +135,7 @@ async function evmFetch(configs: NFTConfigs) {
             return {
                 title: item.name,
                 nftImage: item.image,
+                nftVideo: item.video,
                 pathname: configs.categoryType,
                 token_id: item.token_id,
                 contract_type: item.contract_type,
