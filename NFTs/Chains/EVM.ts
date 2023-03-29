@@ -84,14 +84,7 @@ export default class EVM {
         const metas: NFTMetaData[] = []
         for (const collectionItem of collections.result) {
             const img = await this.getImage(collectionItem.token_uri)
-            const meta = {
-                name: `${collectionItem.name} #${collectionItem.token_id}`,
-                image: img,
-                token_id: collectionItem.token_id,
-                contractAddress: collectionItem.token_address,
-                contract_type: collectionItem.contract_type,
-                owner_of: collectionItem.owner_of
-            }
+            const meta = await this.getNFTMetadata(collectionItem.token_address, collectionItem.token_id)
             metas.push(meta)
         }
         return Promise.resolve(metas)
