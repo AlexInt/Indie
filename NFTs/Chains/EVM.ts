@@ -46,7 +46,12 @@ export default class EVM {
             const metaJson = JSON.parse(nftData.metadata)
             // console.log(metaJson)
             nftMeta.image = IPFS.ipfs2https(metaJson.image)
-            nftMeta.name = metaJson.name;
+            if (!nftData.name.includes(token_id)) {
+                nftMeta.name += ` #${token_id}`;
+            }
+            if (metaJson.name) {
+                nftMeta.name = metaJson.name;
+            }
             nftMeta.description = metaJson.description;
             nftMeta.category_type = metaJson.properties?.category;
 
