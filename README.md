@@ -33,6 +33,7 @@ myNFTs({
     ]
 });
 ```
+* [avatarClass](https://tailwindcss.com/docs/border-radius#rounding-corners-separately) : `rounded`, `rounded-md`, `rounded-lg`, `rounded-full`
 
 ## Use playground to deploy
 
