@@ -83,7 +83,6 @@ export default class EVM {
         const collections = await this.fetchNFT() as CollectionsMeta
         const metas: NFTMetaData[] = []
         for (const collectionItem of collections.result) {
-            const img = await this.getImage(collectionItem.token_uri)
             const meta = await this.getNFTMetadata(collectionItem.token_address, collectionItem.token_id)
             metas.push(meta)
         }
